@@ -67,6 +67,6 @@ public class ModreqCommands implements CommandExecutor {
         return true;
     }
     public String help(){
-        return "/modreq create";
+        return "/modreq create <text>";
     }
 }
