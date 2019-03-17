@@ -1,0 +1,30 @@
+min_words: "Dvě slova jsou minimum."
+
+new_ticket: "Nový ticket %id% - %from%  - %text%"
+
+
+ticket_close: "Close ticket %id%"
+ticket_to_user_close: "%id% %by% %answer%"
+ticket_cant_close: "You cant close ticket with ID %id%"
+
+ticket_claim: "Nový ticket %id% by %from%"
+ticket_claim_to_user: "Your ticket %id% claimed by %by%"
+
+ticket_unclaim: "Unclaim ticket %id% by %from%"
+
+
+
+
+
+ticket_info: "Ticket %id% \n -Created by: %from% \n - Text: %text% \n -Location: %location%"
+
+
+discord_new_ticket: "Nový ticket %id% - %from%  - %text%"
+
+discord_ticket_unclaim: "%id% %by% Unclaim"
+
+discord_unclaim_ticket: "Unclaim ticket %id% by %from%"
+
+discord_ticket_claim: "Claim ticket %id% by %from%"
+
+discord_close_ticket: "Close ticket %id% - %by% - %answer%"

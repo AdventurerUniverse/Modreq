@@ -1,0 +1,8 @@
+mysql_host: locahost
+mysql_port: 3306
+mysql_db: modreq_db
+mysql_user: modreq_user
+// Mysql PASS
+mysql_pass: modreq_pass
+// Min Words
+min_words: 2
