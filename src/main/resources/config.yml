@@ -1,8 +1,7 @@
-mysql_host: locahost
+mysql_host: host
 mysql_port: 3306
-mysql_db: modreq_db
-mysql_user: modreq_user
-// Mysql PASS
-mysql_pass: modreq_pass
-// Min Words
+mysql_db: database
+mysql_user: user
+mysql_pass: password
 min_words: 2
+discord_channel_id: channel

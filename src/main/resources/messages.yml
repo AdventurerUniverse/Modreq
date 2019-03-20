@@ -1,30 +1,24 @@
 min_words: "Dvě slova jsou minimum."
-
-new_ticket: "Nový ticket %id% - %from%  - %text%"
-
-
+new_ticket: "Nový ticket %id% od %from% s textem: %text%"
+ticket_is_claimed: "Claimed ticket"
 ticket_close: "Close ticket %id%"
-ticket_to_user_close: "%id% %by% %answer%"
 ticket_cant_close: "You cant close ticket with ID %id%"
-
-ticket_claim: "Nový ticket %id% by %from%"
-ticket_claim_to_user: "Your ticket %id% claimed by %by%"
-
-ticket_unclaim: "Unclaim ticket %id% by %from%"
+ticket_claim: "Vzal jsi si ticket s  ID: %id%"
+ticket_unclaim: "Ticket ID: %id% už neřeší: %from%"
 
 
 
+#Info for admins
+ticket_info: "Ticket %id% \n - Created by: %from% \n - Text: %text% \n - Location: %location%"
 
-
-ticket_info: "Ticket %id% \n -Created by: %from% \n - Text: %text% \n -Location: %location%"
-
-
-discord_new_ticket: "Nový ticket %id% - %from%  - %text%"
-
-discord_ticket_unclaim: "%id% %by% Unclaim"
-
+#Discord messages
+discord_new_ticket: "Nový ticket %id% \n OD: %from% \n Text: %text%"
 discord_unclaim_ticket: "Unclaim ticket %id% by %from%"
+discord_claim_ticket: "Ticket s ID: %id% začal řešit: %from%"
+discord_close_ticket: ":white_check_mark: Ticket s ID: %id% uzavřel: %by% s odpovědí: %answer% "
 
-discord_ticket_claim: "Claim ticket %id% by %from%"
 
-discord_close_ticket: "Close ticket %id% - %by% - %answer%"
+ticket_to_user_unclaim: "Tvuj ticket s ID: %id% přestal řešit: %by%"
+ticket_to_user_claim: "Tvuj ticket s ID: %id% začal řešit: %by%"
+ticket_user_unclaim_problem: "You cant unclaim this ticket because you dont own it"
+ticket_to_user_close: "Tvuj ticket s ID: %id% byl uzavřen: %by% s odpovědí: %answer%"
