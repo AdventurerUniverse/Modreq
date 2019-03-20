@@ -124,7 +124,24 @@ public class Modreq extends JavaPlugin implements Listener{
     }
     public void checkDatabase() {
         try {
-            statement.execute("CREATE TABLE IF NOT EXISTS `modreqs` ( `PK_idm` int(11) NOT NULL AUTO_INCREMENT,  `uuid` varchar(255) NOT NULL, `nick` varchar(255) NOT NULL, `claim_uuid` VARCHAR(255) NOT NULL DEFAULT \'\'  ,`text` varchar(255) NOT NULL,  `close` int(11) NOT NULL DEFAULT \'0\', `answer` VARCHAR(255) NULL , PRIMARY KEY (`PK_idm`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+ statement.execute("
+CREATE TABLE `modreqs` (
+  `PK_idm` int(11) NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `claim_uuid` varchar(255) DEFAULT NULL,
+  `text` varchar(255) NOT NULL,
+  `status` varchar(15) NOT NULL DEFAULT 'open',
+  `answer` varchar(255) DEFAULT NULL,
+  `world` varchar(255) NOT NULL,
+  `x` int(11) NOT NULL,
+  `y` int(11) NOT NULL,
+  `z` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE `modreqs`
+  ADD PRIMARY KEY (`PK_idm`);
+        ALTER TABLE `modreqs`
+  MODIFY `PK_idm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+COMMIT;");
         } catch (SQLException e) {
             e.printStackTrace();
         }
