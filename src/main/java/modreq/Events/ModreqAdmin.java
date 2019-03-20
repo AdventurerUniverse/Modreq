@@ -18,6 +18,7 @@ public class ModreqAdmin {
 
     public static void list(Player player, String[] args) {
         try {
+            String claim = null;
             String page = "1", status = "open";
             String limit = "51", offset = "0";
             if (args.length > 1 && (args[1].contains("open") || args[1].contains("close") || args[1].contains("all"))) {
@@ -41,7 +42,11 @@ public class ModreqAdmin {
                 player.sendMessage("Tato stránka neexistuje");
             } else {
                 do {
-                    list.addItem(rs.getString("PK_idm"), rs.getString("text"), Bukkit.getServer().getOfflinePlayer(UUID.fromString(rs.getString("uuid"))).getPlayer().getDisplayName());
+                    claim = null;
+                    if(rs.getString("claim_uuid") != null){
+                        claim = Bukkit.getServer().getOfflinePlayer(UUID.fromString(rs.getString("claim_uuid"))).getName();
+                    }
+                    list.addItem(rs.getString("PK_idm"), rs.getString("text"), Bukkit.getServer().getOfflinePlayer(UUID.fromString(rs.getString("uuid"))).getName(), claim);
                 } while (rs.next());
             }
 

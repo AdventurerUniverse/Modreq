@@ -33,33 +33,37 @@ public class Modreq extends JavaPlugin implements Listener{
 
     @Override
     public void onEnable(){
-        Bukkit.getPluginManager().registerEvents(new Inventory(this), this);
-        this.getCommand("modreq").setExecutor(new ModreqCommands(this));
-        this.getCommand("modreqs").setExecutor(new ModreqCommands(this));
+        try {
+            Bukkit.getPluginManager().registerEvents(new Inventory(this), this);
+            this.getCommand("modreq").setExecutor(new ModreqCommands(this));
+            this.getCommand("report").setExecutor(new ModreqCommands(this));
+            this.getCommand("ticket").setExecutor(new ModreqCommands(this));
+            this.getCommand("modreqs").setExecutor(new ModreqCommands(this));
 
-        //new ModreqListener(this);
-        this.loadConfig();
-        this.loadMessages();
-        // Asyn.. loading database
-        BukkitRunnable r = new BukkitRunnable() {
-            @Override
-            public void run() {
-                try {
-                    openConnection();
-                    statement = connection.createStatement();
-                    checkDatabase();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+            this.loadConfig();
+            this.loadMessages();
+            BukkitRunnable r = new BukkitRunnable() {
+                @Override
+                public void run() {
+                    try {
+                        openConnection();
+                        statement = connection.createStatement();
+                        checkDatabase();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        };
+            };
 
-        r.runTaskAsynchronously(this);
-        manager = new InventoryManager(this);
-        manager.init();
-        getLogger().info(prefix + ChatColor.AQUA + "Modreq has load");
+            r.runTaskAsynchronously(this);
+            manager = new InventoryManager(this);
+            manager.init();
+            getLogger().info(prefix + ChatColor.AQUA + "Modreq has load");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public void onDisable() {
         getLogger().info(prefix + "Modreq has been disable !!");

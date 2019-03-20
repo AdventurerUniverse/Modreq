@@ -5,6 +5,7 @@ import github.scarsz.discordsrv.util.DiscordUtil;
 import modreq.Database.Database;
 import modreq.Modreq;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 import java.sql.ResultSet;
 import java.util.UUID;
@@ -18,12 +19,12 @@ public class Discord {
                     ResultSet rs = Database.getTicketId(id);
 
                     if (rs.next()) {
-                        channel.sendMessage(
+                        channel.sendMessage(ChatColor.stripColor(
                                     Modreq.messages.getString(what)
                                         .replace("%id%", id)
                                         .replace("%from%", Bukkit.getServer().getOfflinePlayer(UUID.fromString(rs.getString("uuid"))).getPlayer().getDisplayName())
                                         .replace("%text%", rs.getString("text"))
-                                ).queue();
+                        )).queue();
             }
         } catch (
                 Exception e) {
@@ -37,11 +38,11 @@ public class Discord {
             ResultSet rs = Database.getTicketId(id);
 
             if (rs.next()) {
-                channel.sendMessage(
+                channel.sendMessage(ChatColor.stripColor(
                         Modreq.messages.getString(what)
                                 .replace("%id%", id)
                                 .replace("%from%", Bukkit.getServer().getOfflinePlayer(UUID.fromString(uuid)).getPlayer().getDisplayName())
-                ).queue();
+                ) ).queue();
             }
         } catch (
                 Exception e) {
@@ -55,12 +56,12 @@ public class Discord {
             ResultSet rs = Database.getTicketId(id);
 
             if (rs.next()) {
-                channel.sendMessage(
+                channel.sendMessage( ChatColor.stripColor(
                         Modreq.messages.getString(what)
                                 .replace("%id%", id)
                                 .replace("%by%", Bukkit.getServer().getOfflinePlayer(UUID.fromString(rs.getString("claim_uuid"))).getPlayer().getDisplayName())
                                 .replace("%answer%", answer)
-                ).queue();
+                )).queue();
             }
         } catch (
                 Exception e) {
@@ -74,11 +75,11 @@ public class Discord {
             ResultSet rs = Database.getTicketId(id);
 
             if (rs.next()) {
-                channel.sendMessage(
+                channel.sendMessage(ChatColor.stripColor(
                         Modreq.messages.getString(what)
                                 .replace("%id%", id)
                                 .replace("%from%", Bukkit.getServer().getOfflinePlayer(UUID.fromString(uuid)).getPlayer().getDisplayName())
-                ).queue();
+                )).queue();
             }
         } catch (
                 Exception e) {

@@ -7,7 +7,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.sql.SQLException;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -26,8 +26,14 @@ public class ModreqList {
 
     }
 
-    public static void addItem(String id, String text, String created) throws SQLException {
-        inv.addItem(createGuiItem("Modreq #" + id, new ArrayList<String>(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&b" + text), ChatColor.translateAlternateColorCodes('&', "Created by &c" + created))), Material.PAPER));
+    public static void addItem(String id, String text, String created, String claim){
+        if (claim != null) {
+            inv.addItem(createGuiItem("Modreq #" + id, new ArrayList<String>(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&b" + text), ChatColor.translateAlternateColorCodes('&', "Created by &c" + created) , "",  ChatColor.translateAlternateColorCodes('&', "Claim by &a" + claim))), Material.PAPER));
+
+        } else {
+            inv.addItem(createGuiItem("Modreq #" + id, new ArrayList<String>(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&b" + text), ChatColor.translateAlternateColorCodes('&', "Created by &c" + created ))), Material.PAPER));
+
+        }
     }
 
     public static ItemStack createGuiItem(String name, ArrayList<String> desc, Material mat) {

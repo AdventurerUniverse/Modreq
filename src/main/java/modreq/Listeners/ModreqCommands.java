@@ -24,42 +24,60 @@ public class ModreqCommands implements CommandExecutor {
             return true;
         }
         Player player = (Player) sender;
-        if(args[0].isEmpty()){
+        if(args.length < 1){
             player.sendMessage(this.help());
+            return true;
         }
-
         BukkitRunnable r = new BukkitRunnable() {
             @Override
             public void run() {
-                switch (args[0]) {
-                    case "create":
-                        args[0] = "";
-                        ModreqUser.create(player, args);
-                        break;
-                    case "status":
-                        ModreqUser.list(player, args);
-                        break;
-                }
-                if(player.hasPermission("modreq.claim")) {
-                    switch (args[0]) {
-                        case "list":
-                            ModreqAdmin.list(player, args);
-                            break;
-                        case "close":
-                            ModreqAdmin.close(player, args);
-                            break;
-                        case "unclaim":
-                            ModreqAdmin.unclaim(player, args);
-                            break;
-                        case "claim":
-                            ModreqAdmin.claim(player, args);
-                            break;
-                        case "tp":
-                            ModreqAdmin.tp(player, args);
-                            break;
+
+                if(player.hasPermission("modreq.admin")) {
+                    if(cmd.getName().contains("report") || cmd.getName().contains("ticket")){
+                            ModreqUser.create(player, args);
+
+                    }else {
+                        switch (args[0]) {
+                            case "create":
+                                args[0] = "";
+                                ModreqUser.create(player, args);
+                                break;
+                            case "status":
+                                ModreqUser.list(player, args);
+                                break;
+                            case "list":
+                                ModreqAdmin.list(player, args);
+                                break;
+                            case "close":
+                                ModreqAdmin.close(player, args);
+                                break;
+                            case "unclaim":
+                                ModreqAdmin.unclaim(player, args);
+                                break;
+                            case "claim":
+                                ModreqAdmin.claim(player, args);
+                                break;
+                            case "tp":
+                                ModreqAdmin.tp(player, args);
+                                break;
+                            default:
+                                player.sendMessage("/modreq create <text>");
+                                break;
+                        }
                     }
                 }else{
-                    player.sendMessage("You havent got a permissions");
+                    switch (args[0]) {
+                        case "create":
+                            args[0] = "";
+                            ModreqUser.create(player, args);
+                            break;
+                        case "status":
+                            ModreqUser.list(player, args);
+                            break;
+                        default:
+                            player.sendMessage("/modreq create <text>");
+                            break;
+                    }
                 }
             }
         };

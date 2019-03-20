@@ -10,7 +10,6 @@ import java.util.UUID;
 
 public class MessageAdmin {
     public static void choose(String choose, String id) {
-        Bukkit.broadcastMessage(Modreq.messages.getString(choose).toString());
         Discord.send("discord_"+choose, id);
         MessageAdmin.send(choose, id);
     }
@@ -20,7 +19,6 @@ public class MessageAdmin {
         try {
             ResultSet rs = Database.getTicketId(id);
             if (rs.next()) {
-                Bukkit.broadcastMessage(Bukkit.getOfflinePlayer(rs.getString("uuid")).getName());
                 message = ChatColor.translateAlternateColorCodes('&',
                     Modreq.messages.getString(what)
                         .replace("%id%", id)
