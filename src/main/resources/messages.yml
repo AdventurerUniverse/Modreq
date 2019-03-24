@@ -1,15 +1,17 @@
 min_words: "Dvě slova jsou minimum."
-new_ticket: "Nový ticket %id% od %from% s textem: %text%"
+
 ticket_is_claimed: "Claimed ticket"
 ticket_close: "Close ticket %id%"
-ticket_cant_close: "You cant close ticket with ID %id%"
+
 ticket_claim: "Vzal jsi si ticket s  ID: %id%"
 ticket_unclaim: "Ticket ID: %id% už neřeší: %from%"
 
 
 
+ticket_cant_close: "You cant close ticket with ID %id%"
+
 #Info for admins
-ticket_info: "Ticket %id% \n - Created by: %from% \n - Text: %text% \n - Location: %location%"
+new_ticket: "Nový ticket %id% od %from% s textem: %text%"
 
 #Discord messages
 discord_new_ticket: "Nový ticket %id% \n OD: %from% \n Text: %text%"
@@ -22,5 +24,6 @@ ticket_to_user_unclaim: "Tvuj ticket s ID: %id% přestal řešit: %by%"
 ticket_to_user_claim: "Tvuj ticket s ID: %id% začal řešit: %by%"
 ticket_user_unclaim_problem: "You cant unclaim this ticket because you dont own it"
 ticket_to_user_close: "Tvuj ticket s ID: %id% byl uzavřen: %by% s odpovědí: %answer%"
+
 ticket_to_user_created: "Tvuj ticket s ID: #%id% byl uspěšně založen"
 ticket_to_user_info: "Ticket %id% \n - Created by: %from% \n - Text: %text% \n - Location: %location% \n - Status: %status% \n - Claimed: %by%  \n  - Answer: %answer% "
