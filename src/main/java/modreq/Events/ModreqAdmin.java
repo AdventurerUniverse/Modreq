@@ -75,8 +75,7 @@ public class ModreqAdmin {
                     }
                 }
                 if (allow) {
-
-
+                    Database.UpdateNotSend(args[1]);
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', Modreq.prefix +
                             Modreq.messages.getString("ticket_claim")
                                     .replace("%id%", args[1])
@@ -88,6 +87,7 @@ public class ModreqAdmin {
                                         .replace("%id%", args[1])
                                         .replace("%by%", player.getDisplayName())
                         ));
+                        Database.UpdateSend(args[1]);
                     }
                     Discord.Claimsend("discord_claim_ticket", args[1], player.getUniqueId().toString());
 
@@ -125,7 +125,7 @@ public class ModreqAdmin {
                     }
                 }
                 if (allow) {
-
+                    Database.UpdateNotSend(args[1]);
                     Database.UnClaimTicket(args[1]);
 
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', Modreq.prefix +
@@ -141,6 +141,7 @@ public class ModreqAdmin {
                                         .replace("%id%", args[1])
                                         .replace("%by%", player.getDisplayName())
                         ));
+                        Database.UpdateSend(args[1]);
                     }
                     Discord.unClaimSend("discord_unclaim_ticket", args[1], player.getUniqueId().toString());
 
@@ -160,7 +161,7 @@ public class ModreqAdmin {
         if (args.length > 2) { // modreq close 2 aaa  aaa / 0 1 2 3
             try {
                 Player clamedticket = null;
-                boolean allow = true;
+                boolean allow = true,claim = false;
                 String answer = "";
                 ResultSet result = null;
 
@@ -168,7 +169,8 @@ public class ModreqAdmin {
 
                 while (result.next()) {
                     if (result.getString("claim_uuid") == null) {
-                        allow = false;
+                        allow = true;
+                        clamedticket = Bukkit.getServer().getOfflinePlayer(UUID.fromString(result.getString("uuid"))).getPlayer();
                     }else {
                         if (result.getString("claim_uuid").contains(player.getUniqueId().toString()) && result.getString("status").contains("open")) {
                             allow = true;
@@ -179,6 +181,10 @@ public class ModreqAdmin {
                     }
                 }
                 if (allow) {
+                    Database.UpdateNotSend(args[1]);
+                    if(claim){
+                        ModreqAdmin.claim(player, args);
+                    }
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', Modreq.prefix +  Modreq.messages.getString("ticket_close").replace("%id%", args[1])));
 
                     for(int i = 2; i < args.length; i++) {
@@ -191,6 +197,7 @@ public class ModreqAdmin {
                                         .replace("%by%", player.getDisplayName().toString())
                                         .replace("%answer%", answer)
                         ));
+                        Database.UpdateSend(args[1]);
                     }
                     Discord.closeSend("discord_close_ticket", args[1], answer);
 

@@ -1,10 +1,8 @@
 package modreq;
 
 import fr.minuskube.inv.InventoryManager;
-import fr.minuskube.inv.SmartInvsPlugin;
-import modreq.Listeners.Inventory;
+import modreq.Listeners.Listeners;
 import modreq.Listeners.ModreqCommands;
-import modreq.Listeners.ModreqListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -34,7 +32,7 @@ public class Modreq extends JavaPlugin implements Listener{
     @Override
     public void onEnable(){
         try {
-            Bukkit.getPluginManager().registerEvents(new Inventory(this), this);
+            Bukkit.getServer().getPluginManager().registerEvents(new Listeners(this), this);
             this.getCommand("modreq").setExecutor(new ModreqCommands(this));
             this.getCommand("report").setExecutor(new ModreqCommands(this));
             this.getCommand("ticket").setExecutor(new ModreqCommands(this));
@@ -124,11 +122,10 @@ public class Modreq extends JavaPlugin implements Listener{
     }
     public void checkDatabase() {
         try {
- statement.execute("CREATE TABLE `modreqs` (`PK_idm` int(11) NOT NULL, uuid varchar(255) NOT NULL,`claim_uuid` varchar(255) DEFAULT NULL,`text` varchar(255) NOT NULL,`status` varchar(15) NOT NULL DEFAULT 'open',`answer` varchar(255) DEFAULT NULL,`world` varchar(255) NOT NULL,`x` int(11) NOT NULL,`y` int(11) NOT NULL,`z` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
- statement.execute("ALTER TABLE `modreqs` ADD PRIMARY KEY (`PK_idm`);");
- statement.execute("ALTER TABLE `modreqs` MODIFY `PK_idm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1; ");
+            statement.execute("CREATE TABLE `modreqs` (`PK_idm` int(11) NOT NULL, uuid varchar(255) NOT NULL,`claim_uuid` varchar(255) DEFAULT NULL,`text` varchar(255) NOT NULL,`status` varchar(15) NOT NULL DEFAULT 'open',`answer` varchar(255) DEFAULT NULL,`world` varchar(255) NOT NULL,`x` int(11) NOT NULL,`y` int(11) NOT NULL,`z` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+            statement.execute("ALTER TABLE `modreqs` ADD PRIMARY KEY (`PK_idm`);");
+            statement.execute("ALTER TABLE `modreqs` MODIFY `PK_idm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1; ");
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }

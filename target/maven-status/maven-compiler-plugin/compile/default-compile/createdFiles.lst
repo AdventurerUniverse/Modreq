@@ -1,13 +1,14 @@
 modreq\Modreq.class
 modreq\Events\ModreqAdmin.class
 modreq\Messages\MessageAdmin.class
+modreq\Listeners\Listeners$1.class
 modreq\Listeners\ModreqCommands$1.class
 modreq\Modreq$1.class
 modreq\Events\ModreqUser.class
+modreq\Listeners\Listeners.class
 modreq\Listeners\ModreqListener.class
 modreq\Listeners\ModreqCommands.class
 modreq\Messages\MessagePlayers.class
 modreq\Inventory\ModreqList.class
-modreq\Listeners\Inventory.class
 modreq\Messages\Discord.class
 modreq\Database\Database.class

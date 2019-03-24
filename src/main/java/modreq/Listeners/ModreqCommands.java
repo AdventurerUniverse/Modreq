@@ -42,8 +42,8 @@ public class ModreqCommands implements CommandExecutor {
                                 args[0] = "";
                                 ModreqUser.create(player, args);
                                 break;
-                            case "status":
-                                ModreqUser.list(player, args);
+                            case "own":
+                                ModreqUser.own(player, args);
                                 break;
                             case "list":
                                 ModreqAdmin.list(player, args);
@@ -71,8 +71,8 @@ public class ModreqCommands implements CommandExecutor {
                             args[0] = "";
                             ModreqUser.create(player, args);
                             break;
-                        case "status":
-                            ModreqUser.list(player, args);
+                        case "own":
+                            ModreqUser.own(player, args);
                             break;
                         default:
                             player.sendMessage("/modreq create <text>");
@@ -85,6 +85,7 @@ public class ModreqCommands implements CommandExecutor {
         return true;
     }
     public String help(){
-        return "/modreq create <text>";
+        return "Wrong !!" + "\n" +
+                "Plese write: /modreq create <text>";
     }
 }

@@ -64,5 +64,37 @@ public class Database {
             e.printStackTrace();
         }
     }
+    public static ResultSet getOwnTickets(String uuid){
+        try {
+            return Modreq.statement.executeQuery("SELECT * FROM modreqs WHERE uuid ='"+ uuid + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ResultSet getOwnTicketsNotSend(String uuid){
+        try {
+            return Modreq.statement.executeQuery("SELECT * FROM modreqs WHERE uuid ='"+ uuid + "' AND send =0");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ResultSet UpdateSend(String id){
+        try {
+            Modreq.statement.execute("UPDATE modreqs SET send=1 WHERE PK_idm ='"+ id + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ResultSet UpdateNotSend(String id){
+        try {
+            Modreq.statement.execute("UPDATE modreqs SET send=0 WHERE PK_idm ='"+ id + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }
