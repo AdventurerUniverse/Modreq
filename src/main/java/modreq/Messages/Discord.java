@@ -22,7 +22,7 @@ public class Discord {
                         channel.sendMessage(ChatColor.stripColor(
                                     Modreq.messages.getString(what)
                                         .replace("%id%", id)
-                                        .replace("%from%", Bukkit.getServer().getOfflinePlayer(UUID.fromString(rs.getString("uuid"))).getPlayer().getDisplayName())
+                                        .replace("%from%", Bukkit.getServer().getOfflinePlayer(UUID.fromString(rs.getString("uuid"))).getName())
                                         .replace("%text%", rs.getString("text"))
                         )).queue();
             }

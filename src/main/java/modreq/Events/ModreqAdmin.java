@@ -170,6 +170,7 @@ public class ModreqAdmin {
                 while (result.next()) {
                     if (result.getString("claim_uuid") == null) {
                         allow = true;
+                        claim = true;
                         clamedticket = Bukkit.getServer().getOfflinePlayer(UUID.fromString(result.getString("uuid"))).getPlayer();
                     }else {
                         if (result.getString("claim_uuid").contains(player.getUniqueId().toString()) && result.getString("status").contains("open")) {
