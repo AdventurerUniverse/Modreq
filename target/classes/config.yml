@@ -1,7 +1,0 @@
-mysql_host: host
-mysql_port: 3306
-mysql_db: database
-mysql_user: user
-mysql_pass: password
-min_words: 2
-discord_channel_id: channel
