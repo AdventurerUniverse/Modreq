@@ -86,7 +86,7 @@
         <dependency>
             <groupId>fr.minuskube.inv</groupId>
             <artifactId>smart-invs</artifactId>
-            <version>1.2.6</version>
+            <version>1.2.7</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
